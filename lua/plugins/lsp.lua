@@ -23,7 +23,7 @@ return {
                 filetypes = { "nix" },
             })
             lspconfig.superhtml.setup({
-                filetypes = { "xslt", "xml", "html", "xsl", "ant" },
+                filetypes = { "html" },
             })
             vim.diagnostic.config({ virtual_text = false }) -- use tiny-inline below instead of default
         end,
