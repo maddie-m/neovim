@@ -9,6 +9,7 @@ return {
             ["<Up>"] = { "fallback" },
             ["<Down>"] = { "fallback" },
             ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<CR>"] = { "fallback" },
 
             ["<C-Space>"] = { "show", "hide" },
             -- C-k will show docs
@@ -25,9 +26,7 @@ return {
                 show_on_trigger_character = true,
             },
             menu = {
-                auto_show = function(ctx)
-                    return ctx.mode == "cmdline"
-                end,
+                auto_show = true,
             },
             ghost_text = { -- todo: how to show ghost_te ext and hide menu? not woRKING
                 enabled = true,
@@ -145,6 +144,16 @@ return {
             { "chomosuke/typst-preview.nvim", lazy = true },
             -- CSV
             { "hat0uma/csvview.nvim", lazy = true },
+        },
+    },
+
+    {
+        "folke/persistence.nvim",
+        opts = {
+            "curdir",
+            "folds",
+            "tabpages",
+            "terminal",
         },
     },
 }
