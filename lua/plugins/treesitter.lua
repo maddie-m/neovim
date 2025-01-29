@@ -3,7 +3,7 @@ return {
     opts = {
         ensure_installed = {
             "hyprlang",
-            "typescript",
+            -- "typescript",
         },
     },
     vim.filetype.add({

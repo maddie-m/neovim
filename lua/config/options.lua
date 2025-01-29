@@ -118,9 +118,15 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
-opt.winbar = "%=%m %f"
+-- opt.winbar = "%=%m %f"
 
 vim.treesitter.language.register("xml", { "xsl", "ant", "xslt" })
+vim.filetype.add({ extensions = { xslt = "xml" }, { ant = "xml" } })
 vim.o.background = "light"
+vim.go.background = "light"
 
--- TODO: Change Ctrl-N and Ctrl-P to be Ctrl-J and Ctrl-K
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts.focusable = false
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
