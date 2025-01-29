@@ -1,39 +1,41 @@
 return {
     -- https://www.lazyvim.org/extras/coding/blink#blinkcmp
-    "saghen/blink.cmp",
-    -- key = { { "<C-k>", require("blink.cmp")["show_documentation"], mode = { "n", "x" } } },
-    opts = {
+    {
+        "saghen/blink.cmp",
+        -- key = { { "<C-k>", require("blink.cmp")["show_documentation"], mode = { "n", "x" } } },
+        opts = {
 
-        keymap = {
-            preset = "super-tab",
-            ["<Up>"] = { "fallback" },
-            ["<Down>"] = { "fallback" },
-            ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<CR>"] = { "fallback" },
+            keymap = {
+                preset = "super-tab",
+                ["<Up>"] = { "fallback" },
+                ["<Down>"] = { "fallback" },
+                ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<CR>"] = { "fallback" },
 
-            ["<C-Space>"] = { "show", "hide" },
-            -- C-k will show docs
-            -- C-n scroll down
-            -- C-p scroll up
-            -- tab for accept
+                ["<C-Space>"] = { "show", "hide" },
+                -- C-k will show docs
+                -- C-n scroll down
+                -- C-p scroll up
+                -- tab for accept
+            },
+            completion = {
+                list = { selection = {
+                    preselect = true,
+                } },
+                trigger = {
+                    show_on_keyword = true,
+                    show_on_trigger_character = true,
+                },
+                menu = {
+                    auto_show = true,
+                },
+                ghost_text = { -- todo: how to show ghost_te ext and hide menu? not woRKING
+                    enabled = true,
+                },
+            },
+
+            signature = { enabled = true },
         },
-        completion = {
-            list = { selection = {
-                preselect = true,
-            } },
-            trigger = {
-                show_on_keyword = true,
-                show_on_trigger_character = true,
-            },
-            menu = {
-                auto_show = true,
-            },
-            ghost_text = { -- todo: how to show ghost_te ext and hide menu? not woRKING
-                enabled = true,
-            },
-        },
-
-        signature = { enabled = true },
     },
     { "windwp/nvim-ts-autotag" },
     { "echasnovski/mini.pairs", enabled = false },
