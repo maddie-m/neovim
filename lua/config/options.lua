@@ -120,7 +120,7 @@ vim.g.markdown_recommended_style = 0
 
 -- opt.winbar = "%=%m %f"
 
-vim.treesitter.language.register("xml", { "xsl", "ant", "xslt" })
+vim.treesitter.language.register("xml", { "xslt", "xsl", "ant" })
 vim.filetype.add({ extensions = { xslt = "xml" }, { ant = "xml" } })
 vim.o.background = "light"
 vim.go.background = "light"
@@ -130,3 +130,5 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.focusable = false
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+-- Set to "basedpyright" to use basedpyright instead of pyright.
+vim.g.lazyvim_python_lsp = "basedpyright"

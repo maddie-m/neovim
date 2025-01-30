@@ -56,17 +56,20 @@ return {
                     single_file_support = true,
                     settings = {},
                 },
-                -- lemminx = {
-                --     settings = {
-                --         xml = {
-                --             format = {
-                --                 joinContentLines = false,
-                --             },
-                --             capabilities = { formatting = false },
-                --             validation = { noGrammar = "ignore" },
-                --         },
-                --     },
-                -- },
+                emmet_language_server = {
+                    filetypes = { "xslt", "ant", "xml", "html", "css" },
+                },
+                lemminx = {
+                    settings = {
+                        xml = {
+                            format = {
+                                joinContentLines = false,
+                            },
+                            capabilities = { formatting = false },
+                            validation = { noGrammar = "ignore" },
+                        },
+                    },
+                },
             },
         },
     },

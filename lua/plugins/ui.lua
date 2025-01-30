@@ -108,19 +108,16 @@ return {
     },
     {
         "folke/noice.nvim",
-        -- keys = {
-        --     {
-        --         "<leader>K",
-        --         function()
-        --             require("noice.lsp.signature")
-        --         end,
-        --         mode = { "n", "x" },
-        --         desc = "Show signature (Noice)",
-        -- },
-        -- },
         opts = {
             views = {
+
                 hover = {
+                    border = {
+
+                        style = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+                    },
+                },
+                popup = {
                     border = {
                         style = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
                     },
@@ -137,13 +134,12 @@ return {
                 command_palette = true,
                 lsp_doc_border = true,
             },
-            signature = { enabled = true, auto_open = {
+            signature = { enabled = false, auto_open = {
                 enabled = false,
             } },
             lsp = {
-                override = {},
                 signature = {
-                    enabled = true,
+                    enabled = false,
                     auto_open = { enabled = false },
                 },
             },

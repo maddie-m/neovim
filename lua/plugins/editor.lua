@@ -9,10 +9,11 @@ return {
                 preset = "super-tab",
                 ["<Up>"] = { "fallback" },
                 ["<Down>"] = { "fallback" },
-                ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
+                -- ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
                 ["<CR>"] = { "fallback" },
+                ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 
-                ["<C-Space>"] = { "show", "hide" },
+                -- ["<C-Space>"] = { "show", "hide" },
                 -- C-k will show docs
                 -- C-n scroll down
                 -- C-p scroll up
@@ -27,17 +28,65 @@ return {
                     show_on_trigger_character = true,
                 },
                 menu = {
+                    border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
                     auto_show = true,
                 },
-                ghost_text = { -- todo: how to show ghost_te ext and hide menu? not woRKING
-                    enabled = true,
+                documentation = {
+                    window = { winblend = 15, border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" } },
                 },
+                -- ghost_text = {
+                -- enabled = true,
+                -- },
             },
 
-            signature = { enabled = true },
+            signature = {
+                window = {
+                    winblend = 25,
+                    border = "none",
+                    -- border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+                },
+                enabled = true,
+            },
+            sources = {
+                providers = {
+                    lsp = {
+                        score_offset = 3,
+                    },
+                    buffer = {
+                        score_offset = -3,
+                    },
+                    snippets = {
+                        name = "Snippets",
+                        module = "blink.cmp.sources.snippets",
+                        score_offset = -3,
+                        opts = {
+                            friendly_snippets = true,
+                            search_paths = { vim.fn.stdpath("config") .. "/snippets" },
+                            global_snippets = { "" },
+                            extended_filetypes = {},
+                            ignored_filetypes = {},
+                        },
+                    },
+                },
+            },
         },
     },
-    { "windwp/nvim-ts-autotag" },
+    {
+        "rafamadriz/friendly-snippets",
+        config = function() end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+
+        opts = {
+
+            -- enable_close = true, -- Auto close tags
+            -- enable_rename = true, -- Auto rename pairs of tags
+            -- enable_close_on_slash = true, -- Auto close on trailing
+        },
+        -- enabled = false,
+    },
+    -- { "tronikelis/ts-autotag.nvim", opts = {} },
     { "echasnovski/mini.pairs", enabled = false },
     {
         "windwp/nvim-autopairs",
@@ -52,8 +101,8 @@ return {
             npairs.add_rule(Rule("{", "},", "lua"))
         end,
     },
-    {
 
+    {
         "mikavilpas/yazi.nvim",
         event = "VeryLazy",
         keys = {
@@ -87,6 +136,7 @@ return {
             },
         },
     },
+
     {
         "folke/snacks.nvim",
         keys = {},
@@ -112,6 +162,7 @@ return {
             },
         },
     },
+
     {
         "chrisgrieser/nvim-rip-substitute",
         cmd = "RipSubstitute",
@@ -127,6 +178,7 @@ return {
             },
         },
     },
+
     {
         "SylvanFranklin/omni-preview.nvim",
         opts = {},
